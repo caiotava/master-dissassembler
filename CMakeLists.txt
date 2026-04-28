@@ -9,6 +9,7 @@ find_package(PNG REQUIRED)
 
 add_executable(mastersystem_dissassembler
         src/main.cpp
+        src/Config.cpp
         src/Converters/RomToPNG.cpp
         src/Cartridges/Rom.cpp
         src/Systems/System.cpp
