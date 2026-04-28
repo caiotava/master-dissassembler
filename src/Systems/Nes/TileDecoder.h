@@ -1,7 +1,7 @@
 #ifndef MASTERSYSTEM_DISSASSEMBLER_TILEDECODER_NES_H
 #define MASTERSYSTEM_DISSASSEMBLER_TILEDECODER_NES_H
 
-#include <Converters/Png/ITileDecoder.h>
+#include <Converters/ITileDecoder.h>
 
 namespace nes
 {

@@ -1,5 +1,6 @@
 #include "TileDecoder.h"
-#include "Cartridges/MasterSystem/Cartridge.h"
+#include "Cartridge.h"
+#include <span>
 
 using namespace mastersystem;
 

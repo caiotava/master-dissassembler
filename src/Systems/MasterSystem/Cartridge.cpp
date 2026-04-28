@@ -1,6 +1,5 @@
 #include "Cartridge.h"
 #include <expected>
-#include <fstream>
 
 using namespace mastersystem;
 

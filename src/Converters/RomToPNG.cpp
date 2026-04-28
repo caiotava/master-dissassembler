@@ -1,9 +1,9 @@
 #include "RomToPNG.h"
 
-#include "Cartridges/MasterSystem/Cartridge.h"
-#include "Cartridges/Nes/Cartridge.h"
-#include "Converters/Png/MasterSystem/TileDecoder.h"
-#include "Converters/Png/Nes/TileDecoder.h"
+#include <Systems/MasterSystem/Cartridge.h>
+#include <Systems/Nes/Cartridge.h>
+#include <Systems/MasterSystem/TileDecoder.h>
+#include <Systems/Nes/TileDecoder.h>
 
 #define DEFAULT_PALETTE 0x1A, 0x00, 0x3F, 0x18, 0x1B, 0x2F, 0x07, 0x06, 0x15, 0x1A, 0x2A, 0x28, 0x06, 0x3E, 0x15, 0x2A
 

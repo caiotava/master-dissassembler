@@ -2,7 +2,7 @@
 #ifndef MASTERSYSTEM_DISSASSEMBLER_TILEDECODER_SMS_H
 #define MASTERSYSTEM_DISSASSEMBLER_TILEDECODER_SMS_H
 
-#include <Converters/Png/ITileDecoder.h>
+#include <Converters/ITileDecoder.h>
 
 namespace mastersystem
 {

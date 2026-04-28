@@ -1,8 +1,7 @@
 #include <iostream>
 #include <filesystem>
-
-#include "Cartridges/CartridgeFactory.h"
-#include "RomToPNG.h"
+#include "Converters/RomToPNG.h"
+#include "Systems/System.h"
 
 int main(int argc, char * argv[]) {
     if (argc <= 1) {
@@ -11,20 +10,17 @@ int main(int argc, char * argv[]) {
 
     const std::filesystem::path path(argv[1]);
 
-    auto cartridge = CartridgeFactory::CreateCartridge(path);
-    if (auto err = cartridge->LoadRom(path); !err) {
-        std::cerr << "error loading rom: " << err.error() << std::endl;
+    auto systemResult = System::CreateSystemFromRom(path);
+    if (!systemResult){
+        std::cerr << "error creating system: " << systemResult.error() << std::endl;
         return 1;
     }
 
-    if (auto err = cartridge->ParseHeader(); !err) {
-        std::cerr << "error validating rom: " << err.error() << std::endl;
-        return 2;
-    }
+    const auto system = std::move(systemResult.value());
 
     std::cout << "Rom Loaded            : " << path.string() << std::endl;
-    std::cout << "Rom Size              : " << cartridge->GetRomSize() << std::endl;
-    std::cout << "Rom header Location   : " << cartridge->GetHeaderLocation() << std::endl;
+    std::cout << "Rom Size              : " << system->GetCartridge().GetRomSize() << std::endl;
+    std::cout << "Rom header Location   : " << system->GetCartridge().GetHeaderLocation() << std::endl;
 
     auto pngFileName = path.stem().string() + ".png";
     auto pngFilePath = path.parent_path() / pngFileName;
@@ -36,7 +32,7 @@ int main(int argc, char * argv[]) {
     }
 
     RomToPNG pngConverter{};
-    if (auto err = pngConverter.Convert(*cartridge, file); !err) {
+    if (auto err = pngConverter.Convert(system->GetCartridge(), file); !err) {
         std::cerr << "error converting rom to png: " << err.error() << std::endl;
         return 4;
     }

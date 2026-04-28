@@ -9,13 +9,13 @@ find_package(PNG REQUIRED)
 
 add_executable(mastersystem_dissassembler
         src/main.cpp
-        src/RomToPNG.cpp
+        src/Converters/RomToPNG.cpp
         src/Cartridges/Rom.cpp
-        src/Cartridges/CartridgeFactory.cpp
-        src/Cartridges/MasterSystem/Cartridge.cpp
-        src/Cartridges/Nes/Cartridge.cpp
-        src/Converters/Png/MasterSystem/TileDecoder.cpp
-        src/Converters/Png/Nes/TileDecoder.cpp
+        src/Systems/System.cpp
+        src/Systems/MasterSystem/Cartridge.cpp
+        src/Systems/Nes/Cartridge.cpp
+        src/Systems/MasterSystem/TileDecoder.cpp
+        src/Systems/Nes/TileDecoder.cpp
 )
 
 target_link_libraries(mastersystem_dissassembler PRIVATE PNG::PNG)

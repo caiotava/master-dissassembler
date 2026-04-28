@@ -9,8 +9,8 @@
 
 #include <png.h>
 
-#include "Cartridges/ICartridge.h"
-#include "Converters/Png/ITileDecoder.h"
+#include "../Cartridges/ICartridge.h"
+#include "ITileDecoder.h"
 
 class RomToPNG
 {
